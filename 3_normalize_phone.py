@@ -1,14 +1,12 @@
 import re
 
 def normalize_phone(phone_number):
-    cleaned_number = re.sub(r"[^+\d]", "", phone_number)
+    cleaned_number = re.sub(r"[^+\d]", "", phone_number).strip()
 
-    if cleaned_number.startswith('+38'):
+    if cleaned_number.startswith('+'):
         return cleaned_number
     elif cleaned_number.startswith('38'):
         return '+' + cleaned_number
-    elif cleaned_number.startswith('0'):
-        return '+38' + cleaned_number
     else:
         return '+38' + cleaned_number
 
